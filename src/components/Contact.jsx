@@ -7,7 +7,7 @@ const Contact = () => {
     email: "",
     message: "",
   });
-  const [isSent, setIsSent] = useState(false); 
+  const [isSent, setIsSent] = useState(false);
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData({
@@ -15,26 +15,26 @@ const Contact = () => {
       [id]: value,
     });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const serviceID = "SERVICE_ID";
-    const templateID = "TEMPLATE_ID";
-    const userID = "USER_ID";
+    // environment variables for sensitive data
+    
+    const serviceID = process.env.REACT_APP_SERVICE_ID; 
+    const templateID = process.env.REACT_APP_TEMPLATE_ID; 
+    const userID = process.env.REACT_APP_USER_ID; 
 
     // Send email via EmailJS
-
     emailjs
       .send(serviceID, templateID, formData, userID)
       .then((response) => {
         console.log("SUCCESS!", response.status, response.text);
         setIsSent(true);
-        setFormData({ name: "", email: "", message: "" }); 
+        setFormData({ name: "", email: "", message: "" });
 
         setTimeout(() => {
           setIsSent(false);
-        }, 3000); 
+        }, 3000);
       })
       .catch((err) => {
         console.error("Failed to send email:", err);
