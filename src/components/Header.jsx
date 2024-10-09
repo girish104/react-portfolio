@@ -1,19 +1,38 @@
 import React, { useEffect } from "react";
 
 const Header = () => {
+  const navItems = [
+    { href: "#home", label: "Home" },
+    { href: "#about", label: "About" },
+    { href: "#portfolio", label: "Portfolio" },
+    { href: "#contact", label: "Contact" }
+  ];
+
   useEffect(() => {
     const hamburger = document.getElementById("hamburger");
     const navMenu = document.getElementById("nav-menu");
+    const header = document.querySelector('header');
+    const fixedNav = header.offsetTop;
 
     const handleClick = () => {
       hamburger.classList.toggle("hamburger-active");
       navMenu.classList.toggle("hidden");
     };
 
+    const handleScroll = () => {
+      if (window.scrollY > fixedNav) {
+        header.classList.add('navbar-fixed');
+      } else {
+        header.classList.remove('navbar-fixed');
+      }
+    };
+
     hamburger.addEventListener("click", handleClick);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
       hamburger.removeEventListener("click", handleClick);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -43,38 +62,17 @@ const Header = () => {
               className="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none"
             >
               <ul className="block lg:flex">
-                <li className="group">
-                  <a
-                    href="#home"
-                    className="text-base text-dark py-2 mx-8 flex group-hover:text-primary font-emoji"
-                  >
-                    Home
-                  </a>
-                </li>
-                <li className="group">
-                  <a
-                    href="#about"
-                    className="text-base text-dark py-2 mx-8 flex group-hover:text-primary font-emoji"
-                  >
-                    About
-                  </a>
-                </li>
-                <li className="group">
-                  <a
-                    href="#portfolio"
-                    className="text-base text-dark py-2 mx-8 flex group-hover:text-primary font-emoji"
-                  >
-                    Portfolio
-                  </a>
-                </li>
-                <li className="group">
-                  <a
-                    href="#contact"
-                    className="text-base text-dark py-2 mx-8 flex group-hover:text-primary font-emoji"
-                  >
-                    Contact
-                  </a>
-                </li>
+                {/* Dynamically render navigation items */}
+                {navItems.map((item, index) => (
+                  <li key={index} className="group">
+                    <a
+                      href={item.href}
+                      className="text-base text-dark py-2 mx-8 flex group-hover:text-primary font-emoji"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </nav>
           </div>
