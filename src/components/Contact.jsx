@@ -25,6 +25,16 @@ const Contact = () => {
     const templateID = import.meta.env.VITE_TEMPLATE_ID;
     const userID = import.meta.env.VITE_USER_ID;
 
+    console.log("Service ID:", serviceID); // Check if this logs correctly
+    console.log("Template ID:", templateID); // Check if this logs correctly
+    console.log("User ID:", userID); // Check if this logs correctly
+
+    // Check for missing IDs
+    if (!serviceID || !templateID || !userID) {
+        console.error("One or more environment variables are missing");
+        return;
+    }
+
     // Send email via EmailJS
 
     emailjs
