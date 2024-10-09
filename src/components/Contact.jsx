@@ -15,16 +15,18 @@ const Contact = () => {
       [id]: value,
     });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // environment variables for sensitive data
+    // Use environment variables for sensitive data
     
-    const serviceID = process.env.REACT_APP_SERVICE_ID; 
-    const templateID = process.env.REACT_APP_TEMPLATE_ID; 
-    const userID = process.env.REACT_APP_USER_ID; 
+    const serviceID = import.meta.env.VITE_SERVICE_ID;
+    const templateID = import.meta.env.VITE_TEMPLATE_ID;
+    const userID = import.meta.env.VITE_USER_ID;
 
     // Send email via EmailJS
+
     emailjs
       .send(serviceID, templateID, formData, userID)
       .then((response) => {
