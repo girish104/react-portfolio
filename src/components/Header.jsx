@@ -5,7 +5,8 @@ const Header = () => {
     { href: "#home", label: "Home" },
     { href: "#about", label: "About" },
     { href: "#portfolio", label: "Portfolio" },
-    { href: "#contact", label: "Contact" }
+    { href: "#contact", label: "Contact" },
+    { href: "/cv/resume-01.pdf", label: "Download CV" }
   ];
 
   useEffect(() => {
