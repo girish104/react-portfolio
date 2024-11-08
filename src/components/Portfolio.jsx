@@ -3,6 +3,7 @@ import filmatic from "../assets/img/portfolio/filmatic.jpg";
 import saman from "../assets/img/portfolio/saman.jpg";
 import portfolioImg from "../assets/img/portfolio/portfolio.png";
 import jobs from "../assets/img/portfolio/jobs.jpg";
+import foodie from "../assets/img/portfolio/foodie.png";
 
 const Portfolio = () => {
   return (
@@ -19,6 +20,12 @@ const Portfolio = () => {
         <div className="w-full px-4 flex flex-wrap justify-center xl:w-10/12 xl:mx-auto">
           {[
             {
+              img: foodie,
+              title: "Foodie - React",
+              desc: "Hungry? Order Now!",
+              link: "https://github.com/girish104/foodie-react-app",
+            },
+            {
               img: filmatic,
               title: "Filmatic - Laravel",
               desc: "Search all your favourite movies here!",
@@ -26,7 +33,7 @@ const Portfolio = () => {
             },
             {
               img: saman,
-              title: 'Saman e-commerce',
+              title: "Saman e-commerce",
               desc: "An e-commerce website",
               link: "https://github.com/girish104/saman",
             },
@@ -36,6 +43,7 @@ const Portfolio = () => {
               desc: "Nothing to say, right?",
               link: "https://github.com/girish104/react-portfolio",
             },
+
             {
               img: jobs,
               title: "Jobs App - Laravel",
@@ -43,15 +51,12 @@ const Portfolio = () => {
               link: "https://github.com/girish104/jobs-app",
             },
           ].map((project, index) => (
-            <div
-              key={index}
-              className="mb-12 p-4 md:w-1/2"
-            >
+            <div key={index} className="mb-12 p-4 md:w-1/2">
               <div className="relative rounded-md shadow-md overflow-hidden group">
                 <img
                   src={project.img}
                   alt={project.title}
-                  className="w-full transform group-hover:scale-110 transition-transform duration-500 ease-in-out"
+                  className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500 ease-in-out"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out"></div>
               </div>
