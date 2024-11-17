@@ -17,7 +17,7 @@ const Home = () => {
             </h1>
 
             <p className="font-medium text-secondary mb-10 leading-relaxed">
-              with 6 months of hands-on experience as an intern, specializing in <span className="text-secondary font-bold">PHP, Laravel, and JavaScript. </span>I've worked on real-world projects, building dynamic web
+              with hands-on experience specializing in <span className="text-secondary font-bold">PHP, Laravel, and JavaScript. </span>I've worked on real-world projects, building dynamic web
               applications and enhancing user experiences.
             </p>
 
